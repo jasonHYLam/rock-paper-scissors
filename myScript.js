@@ -12,6 +12,9 @@ function computerWinsRound() {
 	console.log("You lose!");
 }
 
+function draw() {
+	console.log("Draw!");
+}
 function rockWins() {
 	console.log("Rock beats scissors");
 }
@@ -23,46 +26,50 @@ function scissorsWins() {
 function paperWins() {
 	console.log("Paper beats rock");
 }
-function singleTurn(playerSelection, computerSelection, playerScore, computerScore) {
+function singleTurn(playerSelection, computerSelection) {
 	let playerSelectionLower = playerSelection.toLowerCase();
+
+	let roundWinner;
 
 	if (playerSelectionLower == 'scissors' && computerSelection == 'rock') {
 		computerWinsRound();
 		rockWins();
-		computerScore ++;
-		return computerScore;
+		roundWinner = "computer";
+		return roundWinner;
 	}
 	else if (playerSelectionLower == 'paper' && computerSelection == 'scissors') {
 		computerWinsRound();
 		scissorsWins();
-		computerScore ++;
-		return computerScore;
+		roundWinner = "computer";
+		return roundWinner;
 	}
 	else if (playerSelectionLower == 'rock' && computerSelection == 'paper') {
 		computerWinsRound();
 		paperWins();
-		computerScore ++;
-		return computerScore;
+		roundWinner = 'computer';
+		return roundWinner;
 	}
 	else if (playerSelectionLower == 'rock' && computerSelection == 'scissors') {
 		playerWinsRound();
 		rockWins()
-		playerScore++;
-		return playerScore;
+		roundWinner = "player";
+		return roundWinner;
 	}
 	else if (playerSelectionLower == 'scissors' && computerSelection == 'paper') {
 		playerWinsRound();
 		scissorsWins();
-		playerScore++;
-		return playerScore;
+		roundWinner = "player";
+		return roundWinner;
 	}
 	else if (playerSelectionLower == 'paper' && computerSelection == 'rock') {
 		playerWinsRound();
 		paperWins();
-		playerScore++;
-		return playerScore;
+		roundWinner = "player";
+		return roundWinner;
 	}
-	else { return "Draw!" };
+	else { draw();
+		return "Draw!" 
+	};
 }
 
 function game() {
@@ -71,17 +78,27 @@ function game() {
 	for (let i = 0; i < 5; i++) {
 
 		var computerSelection = computerPlay();
-		var playerSelection = prompt("Please choose: rock, paper, scissors").toLowerCase();
-		console.log(playerSelection);
+		var playerSelection =  prompt("Please choose: rock, paper, scissors").toLowerCase();
+
 		while ( playerSelection != "rock" && playerSelection != 'scissors' && playerSelection != 'paper' ) {
 			alert("Please pick rock, paper, scissors");
-			var playerSelection = prompt("Please choose: rock, paper, scissors").toLowerCase;
+			playerSelection = prompt("Please choose: rock, paper, scissors").toLowerCase();
+			console.log(playerSelection);
 		}
-		singleTurn(playerSelection, computerSelection, playerScore=playerScore, computerScore=computerScore);
-		console.log(playerScore);
-		console.log(computerScore);
+		let roundResult = singleTurn(playerSelection, computerSelection);
+		if (roundResult == "player") {
+			playerScore ++;
+		}
+		else if (roundResult == "computer") {
+			computerScore ++;
+		}
+		
+	console.log("Player score: " + playerScore);
+	console.log("Computer score: " + computerScore);
 	}
-
+	if (playerScore > computerScore) {
+		console.log("Grand player victory!");
+	} else { console.log("Grand computer victory!"); }
 }
 
 game();

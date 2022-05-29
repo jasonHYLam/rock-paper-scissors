@@ -4,12 +4,25 @@ function computerPlay() {
 	return computerChoice;
 }
 
+const gameResultsDiv = document.querySelector('#gameResults');
 function playerWinsRound() {
 	console.log("You win!");
+	const winLossMessage = document.createElement('p');
+	winLossMessage.textContent = "You win!";
+	while(gameResultsDiv.firstChild) {
+		gameResultsDiv.removeChild(gameResultsDiv.firstChild);
+	}
+	gameResultsDiv.appendChild(winLossMessage);
 }
 
 function computerWinsRound() {
 	console.log("You lose!");
+	const winLossMessage = document.createElement('p');
+	winLossMessage.textContent = "You lose!";
+	while(gameResultsDiv.firstChild) {
+		gameResultsDiv.removeChild(gameResultsDiv.firstChild);
+	}
+	gameResultsDiv.appendChild(winLossMessage);
 }
 
 function draw() {

@@ -75,30 +75,6 @@ function singleTurn(playerSelection, computerSelection) {
 function game() {
 		let playerScore = 0;
 		let computerScore = 0;
-	for (let i = 0; i < 5; i++) {
-
-		var computerSelection = computerPlay();
-		var playerSelection =  prompt("Please choose: rock, paper, scissors").toLowerCase();
-
-		while ( playerSelection != "rock" && playerSelection != 'scissors' && playerSelection != 'paper' ) {
-			alert("Please pick rock, paper, scissors");
-			playerSelection = prompt("Please choose: rock, paper, scissors").toLowerCase();
-			console.log(playerSelection);
-		}
-		let roundResult = singleTurn(playerSelection, computerSelection);
-		if (roundResult == "player") {
-			playerScore ++;
-		}
-		else if (roundResult == "computer") {
-			computerScore ++;
-		}
-		
-	console.log("Player score: " + playerScore);
-	console.log("Computer score: " + computerScore);
-	}
-	if (playerScore > computerScore) {
-		console.log("Grand player victory!");
-	} else { console.log("Grand computer victory!"); }
 }
 
 game();

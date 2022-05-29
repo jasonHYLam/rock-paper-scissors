@@ -26,7 +26,16 @@ function scissorsWins() {
 function paperWins() {
 	console.log("Paper beats rock");
 }
-function singleTurn(playerSelection, computerSelection) {
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+rock.addEventListener('click', () => playRound('rock', computerPlay()));
+paper.addEventListener('click', () => playRound('paper', computerPlay()));
+scissors.addEventListener('click', () => playRound('scissors', computerPlay()));
+
+function playRound(playerSelection, computerSelection) {
 	let playerSelectionLower = playerSelection.toLowerCase();
 
 	let roundWinner;

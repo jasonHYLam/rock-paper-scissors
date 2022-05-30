@@ -4,40 +4,66 @@ function computerPlay() {
 	return computerChoice;
 }
 
-const gameResultsDiv = document.querySelector('#gameResults');
+const winLossDiv = document.querySelector('#winLossDiv');
+const roundResultsDiv = document.querySelector('#roundResultsDiv');
+
 function playerWinsRound() {
-	console.log("You win!");
 	const winLossMessage = document.createElement('p');
 	winLossMessage.textContent = "You win!";
-	while(gameResultsDiv.firstChild) {
-		gameResultsDiv.removeChild(gameResultsDiv.firstChild);
+	while(winLossDiv.firstChild) {
+		winLossDiv.removeChild(winLossDiv.firstChild);
 	}
-	gameResultsDiv.appendChild(winLossMessage);
+	winLossDiv.appendChild(winLossMessage);
 }
 
 function computerWinsRound() {
-	console.log("You lose!");
 	const winLossMessage = document.createElement('p');
 	winLossMessage.textContent = "You lose!";
-	while(gameResultsDiv.firstChild) {
-		gameResultsDiv.removeChild(gameResultsDiv.firstChild);
+	while(winLossDiv.firstChild) {
+		winLossDiv.removeChild(winLossDiv.firstChild);
 	}
-	gameResultsDiv.appendChild(winLossMessage);
+	winLossDiv.appendChild(winLossMessage);
 }
 
 function draw() {
 	console.log("Draw!");
+	const winLossMessage = document.createElement('p');
+	winLossMessage.textContent = "Draw!";
+	while(winLossDiv.firstChild) {
+		winLossDiv.removeChild(winLossDiv.firstChild);
+	}
+	while(roundResultsDiv.firstChild) {
+		roundResultsDiv.removeChild(roundResultsDiv.firstChild);
+	}
+	winLossDiv.appendChild(winLossMessage);
 }
+
+	
 function rockWins() {
-	console.log("Rock beats scissors");
+	const roundResult = document.createElement('p');
+	roundResult.textContent = "Rock beats scissors!";
+	while(roundResultsDiv.lastChild) {
+		roundResultsDiv.removeChild(roundResultsDiv.firstChild);
+	}
+	roundResultsDiv.appendChild(roundResult);
 }
 
 function scissorsWins() {
-	console.log("Scissors beats paper");
+	const roundResult = document.createElement('p');
+	roundResult.textContent = "Scissors beats paper";
+	while(roundResultsDiv.lastChild) {
+		roundResultsDiv.removeChild(roundResultsDiv.firstChild);
+	}
+	roundResultsDiv.appendChild(roundResult);
 }
 
 function paperWins() {
-	console.log("Paper beats rock");
+	const roundResult = document.createElement('p');
+	roundResult.textContent = "Paper beats rock";
+	while(roundResultsDiv.lastChild) {
+		roundResultsDiv.removeChild(roundResultsDiv.firstChild);
+	}
+	roundResultsDiv.appendChild(roundResult);
 }
 
 const rock = document.querySelector("#rock");

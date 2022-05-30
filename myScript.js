@@ -1,3 +1,12 @@
+let playerScoreVariable = 0;
+let computerScoreVariable = 0;
+
+const playerScore = document.querySelector('#playerScore');
+const computerScore = document.querySelector('#computerScore');
+
+playerScore.innerText = playerScoreVariable;
+computerScore.innerText = computerScoreVariable;
+
 function computerPlay() {
 	const playOptions = ['rock','paper','scissors'];
 	let computerChoice = playOptions[Math.floor(Math.random()*3)]; 
@@ -83,7 +92,6 @@ function playRound(playerSelection, computerSelection) {
 		computerWinsRound();
 		rockWins();
 		roundWinner = "computer";
-		return roundWinner;
 	}
 	else if (playerSelectionLower == 'paper' && computerSelection == 'scissors') {
 		computerWinsRound();
@@ -95,34 +103,55 @@ function playRound(playerSelection, computerSelection) {
 		computerWinsRound();
 		paperWins();
 		roundWinner = 'computer';
-		return roundWinner;
 	}
 	else if (playerSelectionLower == 'rock' && computerSelection == 'scissors') {
 		playerWinsRound();
 		rockWins()
 		roundWinner = "player";
-		return roundWinner;
 	}
 	else if (playerSelectionLower == 'scissors' && computerSelection == 'paper') {
 		playerWinsRound();
 		scissorsWins();
 		roundWinner = "player";
-		return roundWinner;
 	}
 	else if (playerSelectionLower == 'paper' && computerSelection == 'rock') {
 		playerWinsRound();
 		paperWins();
 		roundWinner = "player";
-		return roundWinner;
 	}
 	else { draw();
 		return "Draw!" 
 	};
+
+	if (roundWinner === "player") {
+		playerScoreVariable ++;
+
+		playerScore.innerText = playerScoreVariable;
+	}
+	else if (roundWinner === "computer") {-
+		computerScoreVariable ++;
+		computerScore.innerText = computerScoreVariable;
+	}
+	endGame();
 }
 
-function game() {
-		let playerScore = 0;
-		let computerScore = 0;
-}
+function endGame() {
 
-game();
+	const victoryMessageDiv = document.querySelector("#victoryMessage");
+	if (playerScoreVariable === 5) {
+		const playerVictory = document.createElement('p');
+		playerVictory.innerText = "You win!";
+		victoryMessageDiv.appendChild(playerVictory);
+		rock.disabled = true;
+		paper.disabled = true;
+		scissors.disabled = true;
+	}
+	else if (computerScoreVariable === 5) {
+		const playerVictory = document.createElement('p');
+		playerVictory.innerText = "Computer wins!";
+		victoryMessageDiv.appendChild(playerVictory);
+		rock.disabled = true;
+		paper.disabled = true;
+		scissors.disabled = true;
+	}
+}

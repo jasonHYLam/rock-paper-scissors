@@ -9,7 +9,6 @@ body {
 
     display: flex;
     width: 1200px;
-    background-color: black;
     gap: 80px;
     justify-content: center;
 }

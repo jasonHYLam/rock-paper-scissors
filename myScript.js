@@ -166,6 +166,7 @@ function endGame(winner) {
 	rock.disabled = true;
 	paper.disabled = true;
 	scissors.disabled = true;
+
 }
 
 function displayPlayAgain() {
@@ -183,6 +184,21 @@ function resetGame() {
 	playerScore.innerText = playerScoreVariable;
 	computerScore.innerText = computerScoreVariable;
 	playAgainButton.style.display = "none";
-		playerVictory.innerText = "";
+	playerVictory.innerText = "";
 
+	const playerButtons = document.querySelectorAll("#player-buttons button");
+	console.log(playerButtons);
+	playerButtons.forEach(button => button.classList.remove("clicked-player-button"));
 }
+
+function clickButton(e) {
+	if (e.target.classList.value == "player-button") {
+		const playerButtons = document.querySelectorAll("#player-buttons button")
+		playerButtons.forEach(button => button.classList.remove("clicked-player-button"));
+		e.target.classList.add("clicked-player-button");
+	}
+	}
+
+
+window.addEventListener('click', clickButton);
+

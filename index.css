@@ -11,3 +11,14 @@
     height: 200px;
     width: 200px;
 }
+
+#score-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+}
+
+.score-info p{
+    text-align: center;
+}

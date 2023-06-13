@@ -1,4 +1,5 @@
 const body = document.querySelector('body');
+const playAgainButton = document.querySelector('#play-again-button');
 let playerScoreVariable = 0;
 let computerScoreVariable = 0;
 
@@ -98,7 +99,6 @@ function playRound(playerSelection, computerSelection) {
 		computerWinsRound();
 		scissorsWins();
 		roundWinner = "computer";
-		return roundWinner;
 	}
 	else if (playerSelectionLower == 'rock' && computerSelection == 'paper') {
 		computerWinsRound();
@@ -121,19 +121,24 @@ function playRound(playerSelection, computerSelection) {
 		roundWinner = "player";
 	}
 	else { draw();
-		return "Draw!" 
+		roundWinner = "draw";
 	};
 
-	if (roundWinner === "player") {
+	addScore(roundWinner);
+	isEndGame();
+}
+
+function addScore(winner) {
+	if (winner === "player") {
 		playerScoreVariable ++;
 
 		playerScore.innerText = playerScoreVariable;
 	}
-	else if (roundWinner === "computer") {-
+
+	else if (winner === "computer") {
 		computerScoreVariable ++;
 		computerScore.innerText = computerScoreVariable;
 	}
-	isEndGame();
 }
 
 function isEndGame() {
@@ -152,10 +157,10 @@ function endGame(winner) {
 	const victoryMessageDiv = document.querySelector("#victoryMessage");
 	const playerVictory = document.createElement('p');
 	if (winner == "player") {
-		playerVictory.innerText = "You win!";
+		playerVictory.innerText = "Victory!";
 		victoryMessageDiv.appendChild(playerVictory);
 	} else if (winner == "computer") {
-		playerVictory.innerText = "Computer wins!";
+		playerVictory.innerText = "Loss";
 		victoryMessageDiv.appendChild(playerVictory);
 	}
 	rock.disabled = true;
@@ -164,9 +169,20 @@ function endGame(winner) {
 }
 
 function displayPlayAgain() {
-	const playAgain = document.createElement('button');
-	playAgain.textContent = "Play Again?";
-	body.appendChild(playAgain)
-	
+	playAgainButton.style.display = "block";
+}
+
+playAgainButton.addEventListener('click', resetGame)
+
+function resetGame() {
+	playerScoreVariable = 0;
+	computerScoreVariable = 0;
+	rock.disabled = false;
+	paper.disabled = false;
+	scissors.disabled = false;
+	playerScore.innerText = playerScoreVariable;
+	computerScore.innerText = computerScoreVariable;
+	playAgainButton.style.display = "none";
+		playerVictory.innerText = "";
 
 }

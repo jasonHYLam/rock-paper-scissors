@@ -17,6 +17,12 @@ body {
 #player-buttons button {
     height: 200px;
     width: 200px;
+    transition: all 0.1;
+}
+
+.clicked-player-button {
+    border-color: rgb(72, 74, 196);
+    transform: scale(1.2);
 }
 
 #score-container {

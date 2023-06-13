@@ -1,7 +1,14 @@
+body {
+    text-align: center;
+}
 #player-buttons {
+    margin-top: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+
     display: flex;
     width: 1200px;
-    margin: auto;
     background-color: black;
     gap: 80px;
     justify-content: center;

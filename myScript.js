@@ -1,3 +1,4 @@
+const body = document.querySelector('body');
 let playerScoreVariable = 0;
 let computerScoreVariable = 0;
 
@@ -139,9 +140,11 @@ function isEndGame() {
 	if (playerScoreVariable === 5) {
 		const playerVictory = document.createElement('p');
 		endGame("player");
+		displayPlayAgain();
 	}
 	else if (computerScoreVariable === 5) {
 		endGame("computer");
+		displayPlayAgain();
 	}
 }
 
@@ -158,4 +161,12 @@ function endGame(winner) {
 	rock.disabled = true;
 	paper.disabled = true;
 	scissors.disabled = true;
+}
+
+function displayPlayAgain() {
+	const playAgain = document.createElement('button');
+	playAgain.textContent = "Play Again?";
+	body.appendChild(playAgain)
+	
+
 }

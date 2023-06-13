@@ -132,26 +132,30 @@ function playRound(playerSelection, computerSelection) {
 		computerScoreVariable ++;
 		computerScore.innerText = computerScoreVariable;
 	}
-	endGame();
+	isEndGame();
 }
 
-function endGame() {
-
-	const victoryMessageDiv = document.querySelector("#victoryMessage");
+function isEndGame() {
 	if (playerScoreVariable === 5) {
 		const playerVictory = document.createElement('p');
-		playerVictory.innerText = "You win!";
-		victoryMessageDiv.appendChild(playerVictory);
-		rock.disabled = true;
-		paper.disabled = true;
-		scissors.disabled = true;
+		endGame("player");
 	}
 	else if (computerScoreVariable === 5) {
-		const playerVictory = document.createElement('p');
+		endGame("computer");
+	}
+}
+
+function endGame(winner) {
+	const victoryMessageDiv = document.querySelector("#victoryMessage");
+	const playerVictory = document.createElement('p');
+	if (winner == "player") {
+		playerVictory.innerText = "You win!";
+		victoryMessageDiv.appendChild(playerVictory);
+	} else if (winner == "computer") {
 		playerVictory.innerText = "Computer wins!";
 		victoryMessageDiv.appendChild(playerVictory);
-		rock.disabled = true;
-		paper.disabled = true;
-		scissors.disabled = true;
 	}
+	rock.disabled = true;
+	paper.disabled = true;
+	scissors.disabled = true;
 }
